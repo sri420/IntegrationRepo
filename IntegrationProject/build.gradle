@@ -1,6 +1,7 @@
 buildscript {
 	ext {
 		springBootVersion = '1.4.1.RELEASE'
+		apacheCamelVersion = '2.18.0'
 	}
 	repositories {
 		mavenCentral()
@@ -28,11 +29,15 @@ repositories {
 
 dependencies {
 
+
+    //Spring Cloud Dependencies
 	compile('org.springframework.cloud:spring-cloud-starter-eureka')
 	
+	//Spring Boot Dependencies
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	
+	//Apache Camel Dependencies
 	compile('org.apache.camel:camel-servlet')
 	compile('org.apache.camel:camel-jackson')
 	compile('org.apache.camel:camel-spring-boot-starter')
@@ -41,6 +46,6 @@ dependencies {
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.RELEASE"
-		mavenBom "org.apache.camel:camel-spring-boot-dependencies:2.18.0"
+		mavenBom "org.apache.camel:camel-spring-boot-dependencies:${apacheCamelVersion}"
 	}
 }
