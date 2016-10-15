@@ -1,0 +1,36 @@
+<routes xmlns="http://camel.apache.org/schema/spring">
+
+	<route id="createComposite">
+		<from uri="direct:createComposite" />
+		<log message="Entering..." />
+		<bean ref="compositeClientBean" method="createComposite(${body})" />
+		<log message="Leaving." />
+	</route>
+
+
+
+	<route id="fetchComposite">
+		<from uri="direct:fetchComposite" />
+		<log message="Entering..." />
+		<log message="Fetching Resource details..." />
+		<bean ref="compositeClientBean"
+			method="getCompositeByReferenceNumber(${header.compositeRefNo})" />
+		<log message="Fetched Resource details." />
+		<log message="Leaving." />
+	</route>
+
+
+	<route id="deleteComposite">
+		<from uri="direct:deleteComposite" />
+		<log message="Entering..." />
+		<log message="Deleting Composite Details..." />
+		<bean ref="compositeClientBean"
+			method="deleteCompositeByReferenceNumber(${header.compositeRefNo})" />
+		<log message="Deleted Composite" />
+		<log message="Leaving." />
+	</route>
+
+
+</routes>
+
+

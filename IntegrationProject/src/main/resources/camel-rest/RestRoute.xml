@@ -1,0 +1,20 @@
+<rests xmlns="http://camel.apache.org/schema/spring"> 
+
+	<rest path="composite" >
+	 
+		<post uri="/"  type="com.demo.composite.model.Composite">
+			<to uri="direct:createComposite"/>
+		</post>
+		
+		<get uri="/{compositeRefNo}">
+			<to uri="direct:fetchComposite"/>
+		</get>
+		
+		<delete uri="/{compositeRefNo}">
+			<to uri="direct:deleteComposite"/>
+		</delete>
+		
+	</rest>
+	
+	
+</rests>
